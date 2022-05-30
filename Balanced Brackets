@@ -1,0 +1,46 @@
+using System;
+
+namespace _06._Balanced_Brackets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int lines = int.Parse(Console.ReadLine());
+
+            bool isBalanced = true;
+            int openedPar = 0;
+            string line = "";
+
+            for (int i = 0; i < lines; i++)
+            {
+                line = Console.ReadLine();
+                if (line == "(" && openedPar > 0)
+                {
+                    isBalanced = false;
+                }
+                else if (openedPar == 1 && line == ")")
+                {
+                    openedPar = 0;
+                }
+                else if (openedPar == 0 && line == ")")
+                {
+                    isBalanced = false;
+                }
+                else if (line == "(")
+                {
+                    openedPar++;
+                }
+            }
+
+            if (isBalanced)
+            {
+                Console.WriteLine("BALANCED");
+            }
+            else
+            {
+                Console.WriteLine("UNBALANCED");
+            }
+        }
+    }
+}
